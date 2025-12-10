@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Quartz 4</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Quartz 4</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>01_Introduction</title>
+    <link>https://quartz.jzhao.xyz/01_Introduction</link>
+    <guid>https://quartz.jzhao.xyz/01_Introduction</guid>
+    <description><![CDATA[ What is the Network دي شبكه او مجموعه اجهزه (كمبيوترات - تليفونات - لابتوبات و هكذا) متصلين كلهم ببعض Why Network علشان تربط اجهزه ال HardWare ببعض يعني printer مع ال computer و هكذا Sharing HardWare و مشاركه الداتا Sharing Data Network Components Computer systems يعني يبقى في اجهزه Network Media دا... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>02_Network Terms (Vid 2)</title>
+    <link>https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)</link>
+    <guid>https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)</guid>
+    <description><![CDATA[ ايه ال Subnet وتفرق ايه عن ال Network 🔹 معنى Network الـ Network (الشبكة) ببساطة هي مجموعة من الأجهزة (أجهزة كمبيوتر، سيرفرات، طابعات، راوترات… إلخ) متصلة مع بعضها عن طريق أسلاك أو لاسلكي عشان تتبادل البيانات. ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>03_OSI Model  (Open Systems Interconnections)</title>
+    <link>https://quartz.jzhao.xyz/03_OSI-Model--(Open-Systems-Interconnections)</link>
+    <guid>https://quartz.jzhao.xyz/03_OSI-Model--(Open-Systems-Interconnections)</guid>
+    <description><![CDATA[ لازم تسمع مني القصه دي الاول دلوقتي لو شركه جايبه المعدات بتاعتها من شركه (vendor) و شركه تانيه جايبه معداتها من شركه مختلفه (vendor مختلف) و الشركتين عايزين يتوصلوا ببعض ف بيبقى في احتمال كبير ان الاتصال دا يفشل عشان كل شركه ليها standardization او معايير مختلفه عن بعض و عشان كدا اتجمعت مجموعه شركا... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>04_OSI Model (part 2)</title>
+    <link>https://quartz.jzhao.xyz/04_OSI-Model-(part-2)</link>
+    <guid>https://quartz.jzhao.xyz/04_OSI-Model-(part-2)</guid>
+    <description><![CDATA[ هنا بنركز اكتر على 3 layers و هدفهم هو ال Addressing اللي هم layer 2 Data Link Physical (MAC) Address layer 3 Network Logical (IP) Address layer 4 Transport Port Addresses طبعا كل layer من دول بيكون مسئول انه يبقى معاه نوعين من الحاجه اللي هو مسئول عنها نوع خاص بال source اللي بيطلب ال request ونوع ... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>05_(TCP-IP)</title>
+    <link>https://quartz.jzhao.xyz/05_(TCP-IP)</link>
+    <guid>https://quartz.jzhao.xyz/05_(TCP-IP)</guid>
+    <description><![CDATA[ Transmission Control Protocol / Internet Protocol دا ال البروتوكول المستخدم في شبكه ال Internet و معظم شبكات ال LAN’s النموذج دا اللي عمله Department of Defense (DOD) او وزاره الدفاع الامريكيه و بيتكون من 4 layers Application الوظيفة: واجهة التطبيقات مع الشبكة — يعني البروتوكولات اللي التطبيقات بتست... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>06_TCP-IP (Part 2)</title>
+    <link>https://quartz.jzhao.xyz/06_TCP-IP-(Part-2)</link>
+    <guid>https://quartz.jzhao.xyz/06_TCP-IP-(Part-2)</guid>
+    <description><![CDATA[ شرح مفصل للفرق و اليه عمل ال TCP و ال UDP TCP Techniques Connection Oriented يعني قبل اي حاجه بيتاكد ان ال Session اتعملها Create و دي بيعملها من خلال Three-Way Handshake Three-Way Handshake من كلمه three بيبقى في 3 رسايل بتتم بين ال جهازين اللي هيعملوا Connection عشان يبداو Session Sender → SYN → R... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>07_Network Cables</title>
+    <link>https://quartz.jzhao.xyz/07_Network-Cables</link>
+    <guid>https://quartz.jzhao.xyz/07_Network-Cables</guid>
+    <description><![CDATA[ Throughput &amp; Bandwidth Bandwidth : كميه الداتا اللي بتعدي في نقطه معينه في زمن محدد في حين توافر كل الظروف المثاليه زي ان مفيش حاجه بتعوق الحركه و ان الداتا بتعدي ب اقصى سرعه حسب ال ليميت Throughput : دي كميه الداتا اللي بتعدي فعليا في فتره زمنيه معينه و بيتقاسوا بوحده ال bits per second Transmi... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>08_Network Cables (Part 2)</title>
+    <link>https://quartz.jzhao.xyz/08_Network-Cables-(Part-2)</link>
+    <guid>https://quartz.jzhao.xyz/08_Network-Cables-(Part-2)</guid>
+    <description><![CDATA[ Cable pinouts معناه ازاي الCables بتتوصل بال Connectors منظمه TIA / EIA حددت طريقتين لل Twisted Pair Cables عشان يتوصلو بال RJ 45 و الطريقتين اسمهم TIA / EIA T568A TIA / EIA T568B و الفرق بينهم بيبقى ترتيب الWires في ال Cables و النوع الاشهر هو B تصنيف الكابلات حسب ترتيب ال twisted pairs و طريقه الت... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>09_Network Devices</title>
+    <link>https://quartz.jzhao.xyz/09_Network-Devices</link>
+    <guid>https://quartz.jzhao.xyz/09_Network-Devices</guid>
+    <description><![CDATA[  Network Adapter NIC (Network Interface Card) دا اللي بياخد الداتا من الجهاز و يحولها لاشاره مناسبه يمشيها في ال Media والحاجه اللي بتعمل كدا بالتحديد هي ال transceiver بيبقى عنده الداتا binary وهو يحولها بطريقه ما زي انه ي encode ال 0 ل -voltage و ال 1 ل +voltage ال NIC يعتبر Network architecture s... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item><item>
+    <title>10_Network Devices (part 2)</title>
+    <link>https://quartz.jzhao.xyz/10_Network-Devices-(part-2)</link>
+    <guid>https://quartz.jzhao.xyz/10_Network-Devices-(part-2)</guid>
+    <description><![CDATA[  Internetwork Devices (various network) Router الراوتر بيبقى ليه اكتر من interface و ممكن كل واحده منهم تكون متصله ب network infrastructure مختلفه يعني ممكن يتوصل ب Ethernet , WAN, Wireless Access Point في نفس الوقت و الراوتر بيعتمد في طريقة ال forwarding decision على ال Network Address الرواتر بيبق... ]]></description>
+    <pubDate>Tue, 09 Dec 2025 17:38:50 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

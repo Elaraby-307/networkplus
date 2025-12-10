@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>20_IPV6</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Quartz 4"/><meta property="og:title" content="20_IPV6"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="20_IPV6"/><meta name="twitter:description" content="⭐ أولًا: ليه ظهر IPv6؟ في بداية اختراع الـ IP Protocol كان في بروتوكول واحد بس، وما كانش اسمه IPv4 أو IPv6 — هو كان مجرد IP."/><meta property="og:description" content="⭐ أولًا: ليه ظهر IPv6؟ في بداية اختراع الـ IP Protocol كان في بروتوكول واحد بس، وما كانش اسمه IPv4 أو IPv6 — هو كان مجرد IP."/><meta property="og:image:alt" content="⭐ أولًا: ليه ظهر IPv6؟ في بداية اختراع الـ IP Protocol كان في بروتوكول واحد بس، وما كانش اسمه IPv4 أو IPv6 — هو كان مجرد IP."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/20_IPV6"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/20_IPV6"/><link rel="icon" href="./static/icon.png"/><meta name="description" content="⭐ أولًا: ليه ظهر IPv6؟ في بداية اختراع الـ IP Protocol كان في بروتوكول واحد بس، وما كانش اسمه IPv4 أو IPv6 — هو كان مجرد IP."/><meta name="generator" content="Quartz"/><link href="./index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxwY1xcbmV0d29ya2luZ19zdW1tYXJ5XFxxdWFydHpcXGNvbXBvbmVudHNcXHN0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwYWRkaW5nOiAycmVtO1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="./prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("./static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/20_IPV6-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/20_IPV6-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/20_IPV6-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="20_IPV6"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href=".">Quartz 4</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-21"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-21" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="./">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>20_IPV6</a></div></nav><h1 class="article-title">20_IPV6</h1><p show-comma="true" class="content-meta"><time datetime="2025-12-09T17:38:50.000Z">Dec 09, 2025</time><span>5 min read</span></p></div></div><article class="popover-hint"><h2 id="-أولًا-ليه-ظهر-ipv6">⭐ <strong>أولًا: ليه ظهر IPv6؟</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أولًا-ليه-ظهر-ipv6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>في بداية اختراع الـ <strong>IP Protocol</strong> كان في بروتوكول واحد بس، وما كانش اسمه IPv4 أو IPv6 — هو كان مجرد <strong>IP</strong>.</p>
+<p>مع توسّع الإنترنت وزيادة عدد الأجهزة بشكل ضخم جدًا (موبايلات – لابتوبات – كاميرات – IoT …)، بدأ <strong>IP Address Space</strong> بتاع IPv4 ينفد.</p>
+<p>رغم وجود حلول مؤقتة زي:</p>
+<ul>
+<li>
+<p><strong>NAT (Network Address Translation)</strong></p>
+</li>
+<li>
+<p><strong>Subnetting</strong></p>
+</li>
+</ul>
+<p>لكن دي كانت مجرد <em>مسكنات</em> لأن عدد الأجهزة بيزيد أسرع بكثير من المتوقع.</p>
+<p>فبدأت المنظمات المسؤولة عن الإنترنت (IETF) تفكر في حل جذري → وظهر <strong>IPv6</strong>.</p>
+<p>بعد ظهور IPv6، تمت إعادة تسمية البروتوكول القديم إلى <strong>IPv4</strong>.</p>
+<hr/>
+<h2 id="-مقارنة-بين-ipv4-و-ipv6">⭐ <strong>مقارنة بين IPv4 و IPv6</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مقارنة-بين-ipv4-و-ipv6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="-1-حجم-العنوان-address-size">✔ <strong>1. حجم العنوان (Address Size)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-1-حجم-العنوان-address-size" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>النوع</th><th>عدد البت</th><th>عدد العناوين</th></tr></thead><tbody><tr><td><strong>IPv4</strong></td><td>32-bit</td><td>حوالي 4.3 مليار عنوان</td></tr><tr><td><strong>IPv6</strong></td><td>128-bit</td><td>حوالي 3.4 × 10³⁸ عنوان</td></tr></tbody></table></div>
+<p>IPv6 عدد عناوينه <em>ضخم جدًا</em> لدرجة إن البشر مش ممكن يستنفذوه.</p>
+<hr/>
+<h2 id="-2-شكل-كتابة-العنوان">✔ <strong>2. شكل كتابة العنوان</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-2-شكل-كتابة-العنوان" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="ipv4-format"><strong>IPv4 Format</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ipv4-format" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>4 Octets (كل واحد 8-bit)</p>
+</li>
+<li>
+<p>مكتوب بـ Decimal<br/>
+مثال:<br/>
+<code>192.168.1.2</code></p>
+</li>
+</ul>
+<h3 id="ipv6-format"><strong>IPv6 Format</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ipv6-format" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>8 Blocks = quartets</p>
+</li>
+<li>
+<p>كل Block = 16-bit</p>
+</li>
+<li>
+<p>مكتوبة بـ <strong>Hexadecimal</strong><br/>
+مثال:<br/>
+<code>2001:0db8:0000:0000:0000:ff00:0042:8329</code></p>
+</li>
+</ul>
+<hr/>
+<h1 id="--ipv6-address-shortening-rules-اختصار-العناوين">🌟 ** IPv6 Address Shortening Rules (اختصار العناوين)**<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#--ipv6-address-shortening-rules-اختصار-العناوين" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>في IPv6 عندك <strong>قاعدتين فقط</strong> للاختصار:</p>
+<hr/>
+<h2 id="-rule-1--حذف-الصفر-من-البداية-leading-zero-omission"><strong>📌 Rule 1 — حذف الصفر من البداية (Leading Zero Omission)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-rule-1--حذف-الصفر-من-البداية-leading-zero-omission" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><code>0234 → 234 00ab → ab 0040 → 40</code></p>
+<p>لكن <strong>لا تحذف الصفر لو في النهاية</strong>:</p>
+<p><code>4500 ≠ 45   (❌ غلط)</code></p>
+<hr/>
+<h2 id="-rule-2--استبدال-أي-مجموعة-أصفار-متكررة-بـ-"><strong>📌 Rule 2 — استبدال أي مجموعة أصفار متكررة بـ ::</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-rule-2--استبدال-أي-مجموعة-أصفار-متكررة-بـ-" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><code>2001:0db8:0000:0000:0000:ff00:0042:8329 → 2001:db8::ff00:42:8329</code></p>
+<p>⚠ <strong>مسموح باستخدام :: مرة واحدة فقط</strong></p>
+<hr/>
+<h1 id="-مصطلحات-جديدة-في-ipv6">⭐ <strong>مصطلحات جديدة في IPv6</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مصطلحات-جديدة-في-ipv6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h3 id="-1-link">✔ <strong>1. Link</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-1-link" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>هي الـ Network الصغيرة المتصلة مع بعضها مباشرة.</p>
+<h3 id="-2-interface">✔ <strong>2. Interface</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-2-interface" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>هو اتصال الجهاز بالـ Link سواء:</p>
+<ul>
+<li>
+<p>Physical (كيبل / Wifi)</p>
+</li>
+<li>
+<p>Logical (Virtual)</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-أنواع-العناوين-في-ipv6-address-types">⭐ <strong>أنواع العناوين في IPv6 (Address Types)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أنواع-العناوين-في-ipv6-address-types" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="-1-unicast-address">🔹 <strong>1. Unicast Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-1-unicast-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>عنوان رايح لجهاز واحد فقط (Single Host).</p>
+<p>وينقسم لنوعين:</p>
+<h3 id="a-global-unicast-address"><strong>a) Global Unicast Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#a-global-unicast-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>زي Public IP في IPv4</p>
+</li>
+<li>
+<p>يستخدم للإنترنت</p>
+</li>
+<li>
+<p>غالبًا يبدأ بـ:<br/>
+<code>3/::2000</code></p>
+</li>
+</ul>
+<hr/>
+<h3 id="b-link-local-address"><strong>b) Link-Local Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#b-link-local-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>مثل APIPA في IPv4</p>
+</li>
+<li>
+<p>يستخدم داخل الشبكة المحلية فقط</p>
+</li>
+<li>
+<p>يبدأ دائمًا بـ:<br/>
+<code>fe80::/10</code></p>
+</li>
+</ul>
+<hr/>
+<h2 id="-2-multicast-address">🔹 <strong>2. Multicast Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-2-multicast-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>باكيت واحدة تروح لمجموعة Devices.</p>
+<h2 id="-3-anycast-address">🔹 <strong>3. Anycast Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-3-anycast-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>يرسل للـ Closest Device في المجموعة (مش للكل).</p>
+<hr/>
+<h1 id="special-ipv6-addresses-عناوين-خاصة-ومهمة-جدًا"><strong>Special IPv6 Addresses (عناوين خاصة ومهمة جدًا)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#special-ipv6-addresses-عناوين-خاصة-ومهمة-جدًا" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>في IPv6 في عناوين خاصة “محجوزة” لها وظائف محددة:</p>
+<hr/>
+<h2 id="1-loopback-address"><strong>1. Loopback Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-loopback-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>نفس فكرة 127.0.0.1 في IPv4</p>
+<p>‘128/::1`</p>
+<hr/>
+<h2 id="2-unspecified-address"><strong>2. Unspecified Address</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-unspecified-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>يعني “عنوان مش معروف”<br/>
+زي 0.0.0.0 في IPv4</p>
+<p><code>128/::</code></p>
+<p>يستخدم أثناء ال DHCPv6 أو NDP قبل ما الجهاز ياخد IP.</p>
+<hr/>
+<h2 id="3-default-route"><strong>3. Default Route</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-default-route" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>الراوتر الافتراضي:</p>
+<p><code>::/0</code></p>
+<p>زي 0.0.0.0/0 في IPv4.</p>
+<hr/>
+<h2 id="4-documentation-range"><strong>4. Documentation Range</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-documentation-range" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>مخصص للأمثلة والشرح فقط:</p>
+<p><code>2001:db8::/32</code></p>
+<hr/>
+<h1 id="-7-understanding-ipv6-prefixes-clearly">🌟 <strong>7) Understanding IPv6 Prefixes Clearly</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-7-understanding-ipv6-prefixes-clearly" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>IPv6 prefixes مهمة جدًا، ودي أشهرها:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Prefix</th><th>Meaning</th></tr></thead><tbody><tr><td><code>2000::/3</code></td><td>Global Unicast (Internet)</td></tr><tr><td><code>fe80::/10</code></td><td>Link-Local</td></tr><tr><td><code>fc00::/7</code></td><td>Unique Local (Private)</td></tr><tr><td><code>ff00::/8</code></td><td>Multicast</td></tr><tr><td><code>1::/128</code></td><td>Loopback</td></tr><tr><td><code>::/128</code></td><td>Unspecified</td></tr><tr><td><code>::/0</code></td><td>Default Route</td></tr></tbody></table></div>
+<hr/>
+<h1 id="-8-slaac--stateless-address-auto-configuration">🌟 <strong>8) SLAAC – Stateless Address Auto Configuration</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-8-slaac--stateless-address-auto-configuration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>SLAAC = الجهاز ياخد IPv6 address من نفسه بدون DHCP.</p>
+<p>إزاي؟<br/>
+يستلم الراوتر prefix مثل:</p>
+<p><code>2001:db8:abcd::/64</code></p>
+<p>وبعدها الجهاز يعمل:</p>
+<p><code>Address = Prefix + Interface ID</code></p>
+<p>Interface ID ممكن يتولد من:</p>
+<ul>
+<li>
+<p>MAC address (EUI-64)</p>
+</li>
+<li>
+<p>Randomized ID (Privacy Extensions)</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-9-dhcpv6--طريقة-أخرى-للحصول-على-ip">🌟 <strong>9) DHCPv6 – طريقة أخرى للحصول على IP</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-9-dhcpv6--طريقة-أخرى-للحصول-على-ip" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>IPv6 مش بيعتمد على DHCP زي IPv4</p>
+<p>DHCPv6 له 3 modes:</p>
+<ol>
+<li>
+<p><strong>Stateless DHCPv6</strong><br/>
+الجهاز ياخد IP من SLAAC<br/>
+وياخد DNS فقط من DHCPv6</p>
+</li>
+<li>
+<p><strong>Stateful DHCPv6</strong><br/>
+زي DHCP في IPv4<br/>
+ياخد IP + DNS + Options</p>
+</li>
+<li>
+<p><strong>No DHCPv6</strong><br/>
+يعتمد بالكامل على SLAAC</p>
+</li>
+</ol>
+<hr/>
+<h1 id="-10-neighbor-discovery-protocol-ndp">🌟 <strong>10) Neighbor Discovery Protocol (NDP)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-10-neighbor-discovery-protocol-ndp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>NDP هو البديل لـ ARP في IPv4<br/>
+ويعمل فقط بالـ <strong>ICMPv6</strong></p>
+<p>وظيفته:</p>
+<ul>
+<li>
+<p>يكتشف الجيران</p>
+</li>
+<li>
+<p>يحدد MAC address</p>
+</li>
+<li>
+<p>يعمل Duplicate Address Detection</p>
+</li>
+<li>
+<p>يعرف الراوترات اللي حوالينك</p>
+</li>
+</ul>
+<p>ويستخدم 5 رسائل:</p>
+<ol>
+<li>
+<p><strong>NS — Neighbor Solicitation</strong></p>
+</li>
+<li>
+<p><strong>NA — Neighbor Advertisement</strong></p>
+</li>
+<li>
+<p><strong>RS — Router Solicitation</strong></p>
+</li>
+<li>
+<p><strong>RA — Router Advertisement</strong></p>
+</li>
+<li>
+<p><strong>Redirect</strong> (لو فيه path أقصر)</p>
+</li>
+</ol>
+<hr/>
+<h1 id="-11-icmpv6-مهم-جدًا">🌟 <strong>11) ICMPv6 (مهم جدًا)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-11-icmpv6-مهم-جدًا" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>ICMPv6 هو الأساس في IPv6 وبدونه البروتوكول “ميشتغلش”.</p>
+<p>المهام:</p>
+<ul>
+<li>
+<p>Neighbor Discovery</p>
+</li>
+<li>
+<p>SLAAC</p>
+</li>
+<li>
+<p>Error Messages</p>
+</li>
+<li>
+<p>Router Discovery</p>
+</li>
+</ul>
+<p>ومحتوى RA/RS يحدد:</p>
+<ul>
+<li>
+<p>هل نستخدم DHCPv6؟</p>
+</li>
+<li>
+<p>هل نستخدم SLAAC؟</p>
+</li>
+<li>
+<p>هل الجهاز يولد interface ID بنفسه؟</p>
+</li>
+</ul>
+<hr/>
+<h1 id="-12-مقارنة-ipv4-vs-ipv6-الملخص-النهائي">🌟 <strong>12) مقارنة IPv4 vs IPv6 (الملخص النهائي)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-12-مقارنة-ipv4-vs-ipv6-الملخص-النهائي" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Feature</th><th>IPv4</th><th>IPv6</th></tr></thead><tbody><tr><td>Address Size</td><td>32-bit</td><td>128-bit</td></tr><tr><td>Address Count</td><td>4.3 مليار</td><td>لا نهائي تقريبًا</td></tr><tr><td>Notation</td><td>Decimal</td><td>Hexadecimal</td></tr><tr><td>Broadcast</td><td>موجود</td><td>غير موجود</td></tr><tr><td>NAT</td><td>شائع</td><td>غير مطلوب</td></tr><tr><td>DHCP</td><td>أساسي</td><td>اختياري</td></tr><tr><td>ARP</td><td>موجود</td><td>تم إلغاؤه</td></tr><tr><td>Security</td><td>Optional</td><td>Built-in (IPsec)</td></tr><tr><td>Auto Config</td><td>ضعيف</td><td>قوي (SLAAC)</td></tr><tr><td>Header</td><td>Complex</td><td>Simple</td></tr></tbody></table></div>
+<hr/>
+<h1 id="-13-exam-style-summary-سهل-للحفظ">🌟 <strong>13) Exam-style Summary (سهل للحفظ)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-13-exam-style-summary-سهل-للحفظ" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<ul>
+<li>
+<p>IPv6 يستخدم 128-bit</p>
+</li>
+<li>
+<p>يبدأ Global Unicast بـ <code>2000::/3</code></p>
+</li>
+<li>
+<p>Link-Local يبدأ بـ <code>fe80::/10</code></p>
+</li>
+<li>
+<p>Private IPv6 هو <code>fc00::/7</code></p>
+</li>
+<li>
+<p>Multicast هو <code>ff00::/8</code></p>
+</li>
+<li>
+<p>مفيش Broadcast</p>
+</li>
+<li>
+<p>فيه Anycast</p>
+</li>
+<li>
+<p>SLAAC = الراوتر يدي Prefix + الجهاز يولد Interface ID</p>
+</li>
+<li>
+<p>ARP اتلغى → استبدل بـ NDP</p>
+</li>
+<li>
+<p>Default Route في IPv6 = <code>::/0</code></p>
+</li>
+<li>
+<p>Loopback = <code>::1</code></p>
+</li>
+<li>
+<p>Unspecified = <code>::</code></p>
+</li>
+<li>
+<p>Prefix الشائع هو <code>/64</code></p>
+</li>
+<li>
+<p>اختصار IPv6:</p>
+<ul>
+<li>
+<p>شيل leading zeros</p>
+</li>
+<li>
+<p>استخدم :: مرة واحدة</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="-أنواع-الـ-tunneling-بين-ipv4-و-ipv6">✅ <strong>أنواع الـ Tunneling بين IPv4 و IPv6</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أنواع-الـ-tunneling-بين-ipv4-و-ipv6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>فكرة الـ <strong>Tunneling</strong> ببساطة:</p>
+<blockquote>
+<p>إنك “تغلف” <strong>Traffic من IPv6</strong> جوا <strong>IPv4 packet</strong> (أو العكس) علشان يعدّي في شبكة مش بتدعم البروتوكول الأصلي.</p>
+</blockquote>
+<p>الفائدة:<br/>
+تسمح للأجهزة و الشبكات اللي بتشتغل IPv6 إنها تتواصل فوق شبكة IPv4.</p>
+<hr/>
+<h1 id="-الأنواع-الأساسية-للـ-tunneling">🎯 <strong>الأنواع الأساسية للـ Tunneling</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-الأنواع-الأساسية-للـ-tunneling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="1️⃣-manual-tunneling-static-tunnel">1️⃣ <strong>Manual Tunneling (Static Tunnel)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-manual-tunneling-static-tunnel" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>⭕ <em>أبسط وأقدم نوع</em><br/>
+⭕ ال admin بيحدّد إيدويًا الـ tunnel endpoints (العناوين في الطرفين).</p>
+<h3 id="characteristics"><strong>Characteristics</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#characteristics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>Requires manual configuration.</p>
+</li>
+<li>
+<p>Fixed IPv4 endpoints.</p>
+</li>
+<li>
+<p>No automatic detection.</p>
+</li>
+<li>
+<p>Useful for <strong>lab environments</strong> أو <strong>small networks</strong>.</p>
+</li>
+</ul>
+<h3 id="example">Example:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#example" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>Router A IPv6 -> encapsulated in IPv4 -> Router B</code></p>
+<h3 id="pros">Pros:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pros" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>✔ Stable<br/>
+✔ Secure<br/>
+✔ Easy to understand</p>
+<h3 id="cons">Cons:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cons" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>❌ Not scalable<br/>
+❌ Needs manual work</p>
+<hr/>
+<h2 id="2️⃣-automatic-tunneling">2️⃣ <strong>Automatic Tunneling</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-automatic-tunneling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>هنا العناوين بتتولّد أوتوماتيك باستخدام IPv4 address.</p>
+<h3 id="الأنواع-المشهورة">الأنواع المشهورة:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#الأنواع-المشهورة" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<hr/>
+<h2 id="6to4-tunneling"><strong>6to4 Tunneling</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6to4-tunneling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>أشهر نوع automatic tunneling، prefix ثابت:</p>
+<h3 id="prefix">Prefix:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#prefix" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>2002::/16</code></p>
+<h3 id="كيف-يشتغل">كيف يشتغل؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#كيف-يشتغل" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>بيستخدم <strong>IPv4 address</strong> ويحوّله داخل الـ IPv6 address automatically.</p>
+<p>Example IPv4:</p>
+<p><code>192.168.1.10</code></p>
+<p>Convert to Hex:</p>
+<p><code>C0A8:010A</code></p>
+<p>Final IPv6 6to4 address:</p>
+<p><code>2002:C0A8:010A::/48</code></p>
+<h3 id="pros-1">Pros:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pros-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>✔ Auto configuration<br/>
+✔ Works over Internet</p>
+<h3 id="cons-1">Cons:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cons-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>❌ Not reliable اليوم<br/>
+❌ Deprecated</p>
+<hr/>
+<h2 id="isatap-intra-site-automatic-tunnel-addressing-protocol"><strong>ISATAP (Intra-Site Automatic Tunnel Addressing Protocol)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#isatap-intra-site-automatic-tunnel-addressing-protocol" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>يستخدم لما تكون عندك <strong>LAN IPv4</strong> وعايز أجهزة IPv6 تشتغل فوقها.</p>
+<h3 id="الشكل">الشكل:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#الشكل" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><code>&lt;IPv6 Prefix>::0:5EFE:&lt;IPv4 address></code></p>
+<p>Example:</p>
+<p><code>FE80::5EFE:192.168.1.10</code></p>
+<h3 id="pros-2">Pros:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pros-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>✔ Great for enterprise internal networks<br/>
+✔ Automatic host configuration</p>
+<h3 id="cons-2">Cons:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cons-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>❌ Rarely used now<br/>
+❌ Needs ISATAP router</p>
+<hr/>
+<h2 id="2c️-teredo-tunneling">2C️ <strong>Teredo Tunneling</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2c️-teredo-tunneling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Designed to allow IPv6 connectivity <strong>behind NAT</strong>.</p>
+<h3 id="characteristics-1">Characteristics:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#characteristics-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>Works through <strong>NAT</strong> (unique feature)</p>
+</li>
+<li>
+<p>Uses <strong>UDP port 3544</strong></p>
+</li>
+<li>
+<p>Not recommended for enterprises</p>
+</li>
+</ul>
+<h3 id="pros-3">Pros:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pros-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>✔ Works even behind NAT<br/>
+✔ Useful for home users</p>
+<h3 id="cons-3">Cons:<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cons-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>❌ Slow<br/>
+❌ High overhead<br/>
+❌ Deprecated now</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-9" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-1"><a href="#-أولًا-ليه-ظهر-ipv6" data-for="-أولًا-ليه-ظهر-ipv6">⭐ أولًا: ليه ظهر IPv6؟</a></li><li class="depth-1"><a href="#-مقارنة-بين-ipv4-و-ipv6" data-for="-مقارنة-بين-ipv4-و-ipv6">⭐ مقارنة بين IPv4 و IPv6</a></li><li class="depth-2"><a href="#-1-حجم-العنوان-address-size" data-for="-1-حجم-العنوان-address-size">✔ 1. حجم العنوان (Address Size)</a></li><li class="depth-1"><a href="#-2-شكل-كتابة-العنوان" data-for="-2-شكل-كتابة-العنوان">✔ 2. شكل كتابة العنوان</a></li><li class="depth-2"><a href="#ipv4-format" data-for="ipv4-format">IPv4 Format</a></li><li class="depth-2"><a href="#ipv6-format" data-for="ipv6-format">IPv6 Format</a></li><li class="depth-0"><a href="#--ipv6-address-shortening-rules-اختصار-العناوين" data-for="--ipv6-address-shortening-rules-اختصار-العناوين">🌟 ** IPv6 Address Shortening Rules (اختصار العناوين)**</a></li><li class="depth-1"><a href="#-rule-1--حذف-الصفر-من-البداية-leading-zero-omission" data-for="-rule-1--حذف-الصفر-من-البداية-leading-zero-omission">📌 Rule 1 — حذف الصفر من البداية (Leading Zero Omission)</a></li><li class="depth-1"><a href="#-rule-2--استبدال-أي-مجموعة-أصفار-متكررة-بـ-" data-for="-rule-2--استبدال-أي-مجموعة-أصفار-متكررة-بـ-">📌 Rule 2 — استبدال أي مجموعة أصفار متكررة بـ ::</a></li><li class="depth-0"><a href="#-مصطلحات-جديدة-في-ipv6" data-for="-مصطلحات-جديدة-في-ipv6">⭐ مصطلحات جديدة في IPv6</a></li><li class="depth-2"><a href="#-1-link" data-for="-1-link">✔ 1. Link</a></li><li class="depth-2"><a href="#-2-interface" data-for="-2-interface">✔ 2. Interface</a></li><li class="depth-0"><a href="#-أنواع-العناوين-في-ipv6-address-types" data-for="-أنواع-العناوين-في-ipv6-address-types">⭐ أنواع العناوين في IPv6 (Address Types)</a></li><li class="depth-1"><a href="#-1-unicast-address" data-for="-1-unicast-address">🔹 1. Unicast Address</a></li><li class="depth-2"><a href="#a-global-unicast-address" data-for="a-global-unicast-address">a) Global Unicast Address</a></li><li class="depth-2"><a href="#b-link-local-address" data-for="b-link-local-address">b) Link-Local Address</a></li><li class="depth-1"><a href="#-2-multicast-address" data-for="-2-multicast-address">🔹 2. Multicast Address</a></li><li class="depth-1"><a href="#-3-anycast-address" data-for="-3-anycast-address">🔹 3. Anycast Address</a></li><li class="depth-0"><a href="#special-ipv6-addresses-عناوين-خاصة-ومهمة-جدًا" data-for="special-ipv6-addresses-عناوين-خاصة-ومهمة-جدًا">Special IPv6 Addresses (عناوين خاصة ومهمة جدًا)</a></li><li class="depth-1"><a href="#1-loopback-address" data-for="1-loopback-address">1. Loopback Address</a></li><li class="depth-1"><a href="#2-unspecified-address" data-for="2-unspecified-address">2. Unspecified Address</a></li><li class="depth-1"><a href="#3-default-route" data-for="3-default-route">3. Default Route</a></li><li class="depth-1"><a href="#4-documentation-range" data-for="4-documentation-range">4. Documentation Range</a></li><li class="depth-0"><a href="#-7-understanding-ipv6-prefixes-clearly" data-for="-7-understanding-ipv6-prefixes-clearly">🌟 7) Understanding IPv6 Prefixes Clearly</a></li><li class="depth-0"><a href="#-8-slaac--stateless-address-auto-configuration" data-for="-8-slaac--stateless-address-auto-configuration">🌟 8) SLAAC – Stateless Address Auto Configuration</a></li><li class="depth-0"><a href="#-9-dhcpv6--طريقة-أخرى-للحصول-على-ip" data-for="-9-dhcpv6--طريقة-أخرى-للحصول-على-ip">🌟 9) DHCPv6 – طريقة أخرى للحصول على IP</a></li><li class="depth-0"><a href="#-10-neighbor-discovery-protocol-ndp" data-for="-10-neighbor-discovery-protocol-ndp">🌟 10) Neighbor Discovery Protocol (NDP)</a></li><li class="depth-0"><a href="#-11-icmpv6-مهم-جدًا" data-for="-11-icmpv6-مهم-جدًا">🌟 11) ICMPv6 (مهم جدًا)</a></li><li class="depth-0"><a href="#-12-مقارنة-ipv4-vs-ipv6-الملخص-النهائي" data-for="-12-مقارنة-ipv4-vs-ipv6-الملخص-النهائي">🌟 12) مقارنة IPv4 vs IPv6 (الملخص النهائي)</a></li><li class="depth-0"><a href="#-13-exam-style-summary-سهل-للحفظ" data-for="-13-exam-style-summary-سهل-للحفظ">🌟 13) Exam-style Summary (سهل للحفظ)</a></li><li class="depth-0"><a href="#-أنواع-الـ-tunneling-بين-ipv4-و-ipv6" data-for="-أنواع-الـ-tunneling-بين-ipv4-و-ipv6">✅ أنواع الـ Tunneling بين IPv4 و IPv6</a></li><li class="depth-0"><a href="#-الأنواع-الأساسية-للـ-tunneling" data-for="-الأنواع-الأساسية-للـ-tunneling">🎯 الأنواع الأساسية للـ Tunneling</a></li><li class="depth-1"><a href="#1️⃣-manual-tunneling-static-tunnel" data-for="1️⃣-manual-tunneling-static-tunnel">1️⃣ Manual Tunneling (Static Tunnel)</a></li><li class="depth-2"><a href="#characteristics" data-for="characteristics">Characteristics</a></li><li class="depth-2"><a href="#example" data-for="example">Example:</a></li><li class="depth-2"><a href="#pros" data-for="pros">Pros:</a></li><li class="depth-2"><a href="#cons" data-for="cons">Cons:</a></li><li class="depth-1"><a href="#2️⃣-automatic-tunneling" data-for="2️⃣-automatic-tunneling">2️⃣ Automatic Tunneling</a></li><li class="depth-2"><a href="#الأنواع-المشهورة" data-for="الأنواع-المشهورة">الأنواع المشهورة:</a></li><li class="depth-1"><a href="#6to4-tunneling" data-for="6to4-tunneling">6to4 Tunneling</a></li><li class="depth-2"><a href="#prefix" data-for="prefix">Prefix:</a></li><li class="depth-2"><a href="#كيف-يشتغل" data-for="كيف-يشتغل">كيف يشتغل؟</a></li><li class="depth-2"><a href="#pros-1" data-for="pros-1">Pros:</a></li><li class="depth-2"><a href="#cons-1" data-for="cons-1">Cons:</a></li><li class="depth-1"><a href="#isatap-intra-site-automatic-tunnel-addressing-protocol" data-for="isatap-intra-site-automatic-tunnel-addressing-protocol">ISATAP (Intra-Site Automatic Tunnel Addressing Protocol)</a></li><li class="depth-2"><a href="#الشكل" data-for="الشكل">الشكل:</a></li><li class="depth-2"><a href="#pros-2" data-for="pros-2">Pros:</a></li><li class="depth-2"><a href="#cons-2" data-for="cons-2">Cons:</a></li><li class="depth-1"><a href="#2c️-teredo-tunneling" data-for="2c️-teredo-tunneling">2C️ Teredo Tunneling</a></li><li class="depth-2"><a href="#characteristics-1" data-for="characteristics-1">Characteristics:</a></li><li class="depth-2"><a href="#pros-3" data-for="pros-3">Pros:</a></li><li class="depth-2"><a href="#cons-3" data-for="cons-3">Cons:</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2025</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="./postscript.js" type="module" data-persist="true"></script></html>

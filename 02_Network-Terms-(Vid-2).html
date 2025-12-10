@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>02_Network Terms (Vid 2)</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Quartz 4"/><meta property="og:title" content="02_Network Terms (Vid 2)"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="02_Network Terms (Vid 2)"/><meta name="twitter:description" content="ايه ال Subnet وتفرق ايه عن ال Network 🔹 معنى Network الـ Network (الشبكة) ببساطة هي مجموعة من الأجهزة (أجهزة كمبيوتر، سيرفرات، طابعات، راوترات… إلخ) متصلة مع بعضها عن طريق أسلاك أو لاسلكي عشان تتبادل البيانات."/><meta property="og:description" content="ايه ال Subnet وتفرق ايه عن ال Network 🔹 معنى Network الـ Network (الشبكة) ببساطة هي مجموعة من الأجهزة (أجهزة كمبيوتر، سيرفرات، طابعات، راوترات… إلخ) متصلة مع بعضها عن طريق أسلاك أو لاسلكي عشان تتبادل البيانات."/><meta property="og:image:alt" content="ايه ال Subnet وتفرق ايه عن ال Network 🔹 معنى Network الـ Network (الشبكة) ببساطة هي مجموعة من الأجهزة (أجهزة كمبيوتر، سيرفرات، طابعات، راوترات… إلخ) متصلة مع بعضها عن طريق أسلاك أو لاسلكي عشان تتبادل البيانات."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)"/><link rel="icon" href="./static/icon.png"/><meta name="description" content="ايه ال Subnet وتفرق ايه عن ال Network 🔹 معنى Network الـ Network (الشبكة) ببساطة هي مجموعة من الأجهزة (أجهزة كمبيوتر، سيرفرات، طابعات، راوترات… إلخ) متصلة مع بعضها عن طريق أسلاك أو لاسلكي عشان تتبادل البيانات."/><meta name="generator" content="Quartz"/><link href="./index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxwY1xcbmV0d29ya2luZ19zdW1tYXJ5XFxxdWFydHpcXGNvbXBvbmVudHNcXHN0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwYWRkaW5nOiAycmVtO1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="./prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("./static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/02_Network-Terms-(Vid-2)-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="02_Network-Terms-(Vid-2)"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href=".">Quartz 4</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-2" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="./">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>02_Network Terms (Vid 2)</a></div></nav><h1 class="article-title">02_Network Terms (Vid 2)</h1><p show-comma="true" class="content-meta"><time datetime="2025-12-09T17:38:50.000Z">Dec 09, 2025</time><span>13 min read</span></p></div></div><article class="popover-hint"><h3 id="ايه-ال-subnet-وتفرق-ايه-عن-ال-network">ايه ال Subnet وتفرق ايه عن ال Network<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ايه-ال-subnet-وتفرق-ايه-عن-ال-network" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="-معنى-network">🔹 معنى <strong>Network</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-معنى-network" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>الـ <strong>Network</strong> (الشبكة) ببساطة هي مجموعة من الأجهزة (أجهزة كمبيوتر، سيرفرات، طابعات، راوترات… إلخ) متصلة مع بعضها عن طريق أسلاك أو لاسلكي عشان تتبادل البيانات.</p>
+</li>
+<li>
+<p>ليها <strong>عنوان رئيسي</strong> (Network Address) بيمثل الشبكة كلها.</p>
+</li>
+<li>
+<p>مثال:<br/>
+لو عندنا شبكة عنوانها <strong>192.168.1.0/24</strong> → ده معناه إن الشبكة دي ممكن تحتوي على 254 جهاز (من 192.168.1.1 لحد 192.168.1.254).</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-معنى-subnet">🔹 معنى <strong>Subnet</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-معنى-subnet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>كلمة <strong>Subnet</strong> اختصار <strong>Sub-network</strong> يعني “شبكة فرعية”.</p>
+</li>
+<li>
+<p>ببساطة: إحنا بناخد شبكة كبيرة ونقسمها لعدة شبكات أصغر (Subnets).</p>
+</li>
+<li>
+<p>الهدف:</p>
+<ol>
+<li>
+<p><strong>تنظيم</strong> الشبكة الكبيرة.</p>
+</li>
+<li>
+<p><strong>تقليل البث (Broadcast traffic)</strong>.</p>
+</li>
+<li>
+<p><strong>زيادة الأمان</strong> (كل subnet ممكن نعزلها).</p>
+</li>
+<li>
+<p><strong>استغلال أفضل للعناوين</strong> (IP Addresses).</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr/>
+<h4 id="-الفرق-بين-network-و-subnet">🔹 الفرق بين Network و Subnet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-الفرق-بين-network-و-subnet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Network</th><th>Subnet</th></tr></thead><tbody><tr><td>هي الشبكة الرئيسية</td><td>هي تقسيم للشبكة الرئيسية لجزء أصغر</td></tr><tr><td>ممكن تحتوي على آلاف الأجهزة</td><td>كل Subnet تحتوي على عدد أقل من الأجهزة</td></tr><tr><td>عنوانها بيتحدد بالـ Network Address</td><td>عنوانها بيتحدد بالـ Subnet Address و Subnet Mask</td></tr><tr><td>مثال: 192.168.0.0/16</td><td>مثال: 192.168.1.0/24 و 192.168.2.0/24</td></tr></tbody></table></div>
+<hr/>
+<h4 id="-مكونات-الـ-subnet">🔹 مكونات الـ Subnet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مكونات-الـ-subnet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>أي Subnet بتتكون من:</p>
+<ol>
+<li>
+<p><strong>Network Address</strong> → أول عنوان في الشبكة، بيمثل اسم الشبكة (ما ينفعش يتخصص لجهاز).</p>
+</li>
+<li>
+<p><strong>Usable IP Addresses</strong> → العناوين اللي ممكن نوزعها على الأجهزة (PC, Server…).</p>
+</li>
+<li>
+<p><strong>Broadcast Address</strong> → آخر عنوان في الشبكة، بيستخدم لإرسال رسالة لكل الأجهزة داخل الـ Subnet.</p>
+</li>
+<li>
+<p><strong>Subnet Mask</strong> → هو اللي بيحدد حجم الـ Subnet وعدد الأجهزة اللي ممكن تحتويها.</p>
+</li>
+</ol>
+<hr/>
+<p>🔸 مثال عملي:<br/>
+الشبكة: <strong>192.168.1.0/24</strong></p>
+<ul>
+<li>
+<p>Network Address = 192.168.1.0</p>
+</li>
+<li>
+<p>Usable IPs = 192.168.1.1 → 192.168.1.254</p>
+</li>
+<li>
+<p>Broadcast Address = 192.168.1.255</p>
+</li>
+<li>
+<p>Subnet Mask = 255.255.255.0</p>
+</li>
+</ul>
+<p>لو قسمناها نصين (/25):</p>
+<ul>
+<li>
+<p>Subnet 1: 192.168.1.0 → 192.168.1.127</p>
+</li>
+<li>
+<p>Subnet 2: 192.168.1.128 → 192.168.1.255
+و بنربط ال Subnets ببعض عن طريق ال Routers</p>
+</li>
+</ul>
+<h3 id="الربط-بين-2-lan">الربط بين 2 LAN<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#الربط-بين-2-lan" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>لو هنربط بين 2 LAN والاتنين تبع نفس الشركه ( We مثلا ) هيبقى ناتج الربط اسمه Network عادي
+طيب لو الربط بين  2 LAN من شركتين مختلفين زي (We , Vodafone) iهيبقى الناتج اسمه interNetwork</p>
+<p>و الشركه بتاعت النت اسمها <em>ISP (Internet service provider)</em></p>
+<h3 id="يعني-ايه-intranet-و-يفرق-ايه-عن-internet">يعني ايه intranet و يفرق ايه عن internet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#يعني-ايه-intranet-و-يفرق-ايه-عن-internet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="-معنى-intranet">🔹 معنى <strong>Intranet</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-معنى-intranet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>الـ <strong>Intranet</strong> = “شبكة داخلية” خاصة بمؤسسة أو منظمة.</p>
+</li>
+<li>
+<p>الهدف منها: إنها توصل أجهزة الشركة أو المؤسسة ببعضها البعض، وتتيح لهم مشاركة الملفات والموارد (زي الطابعات، قواعد البيانات، البريد الداخلي).</p>
+</li>
+<li>
+<p>بتكون <strong>مغلقة</strong> على الموظفين أو المستخدمين المصرح لهم بس، يعني مش أي حد من برة يقدر يدخل عليها.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-مكونات-الـ-intranet">🔹 مكونات الـ Intranet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مكونات-الـ-intranet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>الـ Intranet غالبًا بيتكون من:</p>
+<ol>
+<li>
+<p><strong>Servers (خوادم)</strong> → لتخزين الملفات، تشغيل قواعد البيانات، تشغيل مواقع داخلية للشركة.</p>
+</li>
+<li>
+<p><strong>Clients (أجهزة المستخدمين)</strong> → أجهزة الكمبيوتر / اللابتوبات اللي بيتصل بيها الموظفين.</p>
+</li>
+<li>
+<p><strong>Networking devices</strong> → سويتشات، راوترات، جدران نارية (Firewalls) عشان تأمين وربط الأجهزة.</p>
+</li>
+<li>
+<p><strong>Software</strong> → تطبيقات داخلية زي البريد الإلكتروني الخاص بالشركة، أنظمة الـ ERP، مواقع داخلية (زي موقع الشركة الداخلي أو بوابة الموظفين).</p>
+</li>
+</ol>
+<hr/>
+<h4 id="-الفرق-بين-intranet-و-internet">🔹 الفرق بين <strong>Intranet</strong> و <strong>Internet</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-الفرق-بين-intranet-و-internet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Intranet</th><th>Internet</th></tr></thead><tbody><tr><td>شبكة <strong>داخلية خاصة</strong> (Private)</td><td>شبكة <strong>عالمية عامة</strong> (Public)</td></tr><tr><td>يستخدمها موظفو الشركة أو المؤسسة فقط</td><td>يستخدمها أي شخص في العالم</td></tr><tr><td>مؤمنة (Firewall, Authentication)</td><td>أقل خصوصية، مفتوحة للجميع</td></tr><tr><td>أمثلة: نظام الموارد البشرية داخل الشركة، بريد داخلي، قواعد بيانات</td><td>أمثلة: Google, Facebook, YouTube</td></tr><tr><td>بيتطلب صلاحيات أو VPN لو عايز تدخل من برة</td><td>متاح لأي شخص عنده اتصال بالإنترنت</td></tr></tbody></table></div>
+<hr/>
+<p>🔸 <strong>تشبيه بسيط</strong>:</p>
+<ul>
+<li>
+<p>تخيّل إن الشركة عندها <strong>مكتبة خاصة داخلية</strong> فيها كتب وملفات للموظفين بس → ده الـ <strong>Intranet</strong>.</p>
+</li>
+<li>
+<p>أما المكتبات العامة اللي في أي مدينة والكل يقدر يدخلها → دي الـ <strong>Internet</strong>.</p>
+</li>
+</ul>
+<h3 id="-العلاقة-بين-intranet-و-lan">✅ العلاقة بين <strong>Intranet</strong> و <strong>LAN</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-العلاقة-بين-intranet-و-lan" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>LAN (Local Area Network)</strong>:<br/>
+شبكة محلية بتربط الأجهزة (كمبيوترات، طابعات…) في مكان محدود زي مكتب أو بيت.<br/>
+هي مجرد <strong>بنية تحتية (Infrastructure)</strong> بتوصل الأجهزة ببعض.</p>
+</li>
+<li>
+<p><strong>Intranet</strong>:<br/>
+خدمة أو <strong>شبكة خاصة</strong> مبنية فوق الـ LAN (أو WAN أحيانًا).<br/>
+يعني هي استخدام الشبكة المحلية لتوفير موارد وخدمات للموظفين (زي مواقع داخلية، بريد داخلي، قواعد بيانات).</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-الفرق-الأساسي">🔹 الفرق الأساسي<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-الفرق-الأساسي" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p><strong>LAN</strong> = الأسلاك + السويتشات + الراوترات اللي بتوصل الأجهزة.</p>
+</li>
+<li>
+<p><strong>Intranet</strong> = المحتوى والخدمات اللي الشركة بتوفرها للموظفين جوه الشبكة دي.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-مثال-يوضح-الفكرة">🔸 مثال يوضح الفكرة<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مثال-يوضح-الفكرة" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ol>
+<li>
+<p>عندك شركة صغيرة:</p>
+<ul>
+<li>ركبت Switch ووصلت 10 أجهزة كمبيوتر = كده عندك <strong>LAN</strong>.</li>
+</ul>
+</li>
+<li>
+<p>جبت Server جوه الشبكة، وركبت عليه موقع داخلي للموظفين عشان يشوفوا أخبار الشركة ويشاركوا ملفات = هنا عملت <strong>Intranet</strong>.</p>
+</li>
+</ol>
+<hr/>
+<p>يعني نقدر نقول:<br/>
+<strong>الـ Intranet مش هو الـ LAN، لكنه بيشتغل “فوق” الـ LAN</strong>.</p>
+<h3 id="ايه-الفرق-بين-extranet--intranet">ايه الفرق بين Extranet , Intranet<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ايه-الفرق-بين-extranet--intranet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="-أوجه-التشابه">✅ أوجه التشابه<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أوجه-التشابه" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Intranet &amp; Extranet</th></tr></thead><tbody><tr><td>الاتنين شبكات <strong>خاصة (Private Networks)</strong> مش مفتوحة للعامة.</td></tr><tr><td>مبنيين على نفس البنية التحتية (LAN, WAN, Servers, Firewalls).</td></tr><tr><td>بيستخدموا نفس البروتوكولات (TCP/IP, HTTP, FTP…).</td></tr><tr><td>الهدف منهم هو <strong>مشاركة موارد ومعلومات</strong>.</td></tr><tr><td>بيتطلبوا <strong>أمان وصلاحيات دخول</strong> (Authentication, VPN).</td></tr></tbody></table></div>
+<hr/>
+<h4 id="-أوجه-الاختلاف">✅ أوجه الاختلاف<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أوجه-الاختلاف" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Intranet</th><th>Extranet</th></tr></thead><tbody><tr><td>موجه للاستخدام <strong>الداخلي فقط</strong> (موظفي الشركة).</td><td>موجه للاستخدام الداخلي + جهات <strong>خارجية</strong> (موردين، شركاء، عملاء).</td></tr><tr><td>نطاق الوصول محدود داخل الشركة.</td><td>نطاق الوصول أوسع لأنه بيشمل أطراف من خارج الشركة.</td></tr><tr><td>الهدف: تحسين التواصل والإنتاجية داخل المؤسسة.</td><td>الهدف: التعاون ومشاركة المعلومات مع شركاء خارجيين.</td></tr><tr><td>الأمان عالي لكن داخلي.</td><td>الأمان أعلى لأن فيه وصول من خارج الشبكة (VPN, Firewalls متقدمة).</td></tr></tbody></table></div>
+<hr/>
+<p>🔸 <strong>تشبيه سريع</strong>:</p>
+<ul>
+<li>
+<p><strong>Intranet</strong> = قاعة اجتماعات داخلية للموظفين فقط.</p>
+</li>
+<li>
+<p><strong>Extranet</strong> = نفس القاعة لكن فيها باب مخصوص لشركاء الشركة يدخلوا ببطاقة أو تصريح خاص.</p>
+</li>
+</ul>
+<h3 id="ايه-ال-work-station">ايه ال Work Station<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ايه-ال-work-station" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>جهاز كومبيوتر ب امكانيات جامده للاستخدام الفردي</p>
+<h3 id="ايه-الفرق-بين-ال-workstation-و-ال-server">ايه الفرق بين ال workstation و ال server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ايه-الفرق-بين-ال-workstation-و-ال-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="-workstation">🔹 <strong>Workstation</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-workstation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>جهاز كمبيوتر فردي قوي.</p>
+</li>
+<li>
+<p>بيستخدمه <strong>شخص واحد</strong> لتنفيذ مهام معقدة أو ثقيلة (زي التصميم، البرمجة، التحليل).</p>
+</li>
+<li>
+<p>يركز على <strong>قوة المعالجة الرسومية (GPU)</strong> والراحة في الاستخدام.</p>
+</li>
+<li>
+<p>غالبًا بيكون في مكاتب المهندسين، المصممين، الباحثين.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-server">🔹 <strong>Server</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>جهاز كمبيوتر (أو نظام) بيخدم <strong>عدة مستخدمين</strong> أو أجهزة في نفس الوقت.</p>
+</li>
+<li>
+<p>الغرض الأساسي: <strong>تقديم خدمات</strong> (زي استضافة مواقع، قواعد بيانات، بريد إلكتروني، ملفات…).</p>
+</li>
+<li>
+<p>يركز على <strong>الأداء المستمر والاعتمادية</strong> (بيشتغل 24/7).</p>
+</li>
+<li>
+<p>موجود في مراكز البيانات (Data Centers) أو شبكات الشركات.</p>
+</li>
+<li>
+<p>اكتر حاجه بتميز ال server هي ال OS بيبقى اسمه Network OS , Server OS</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-أوجه-التشابه-1">🔹 أوجه التشابه<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أوجه-التشابه-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ol>
+<li>
+<p>الاتنين أجهزة كمبيوتر قوية.</p>
+</li>
+<li>
+<p>الاتنين فيهم مكونات قوية (CPU, RAM, Storage).</p>
+</li>
+<li>
+<p>ممكن يشتغلوا بأنظمة تشغيل متقدمة (Windows Server, Linux, Unix…).</p>
+</li>
+</ol>
+<hr/>
+<h4 id="-أوجه-الاختلاف-1">🔹 أوجه الاختلاف<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-أوجه-الاختلاف-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Workstation</th><th>Server</th></tr></thead><tbody><tr><td>مخصص لشخص واحد.</td><td>يخدم عدد كبير من المستخدمين أو الأجهزة.</td></tr><tr><td>قوي في الجرافيك والبرامج الثقيلة.</td><td>قوي في المعالجة المتوازية وتوزيع المهام.</td></tr><tr><td>بيستخدم عادة في التصميم والبحث.</td><td>بيستخدم لتقديم خدمات (مواقع، قواعد بيانات، تخزين).</td></tr><tr><td>ممكن يتقفل آخر اليوم.</td><td>لازم يشتغل 24/7 بدون توقف.</td></tr><tr><td>نظام تشغيل غالبًا Windows أو Linux عادي.</td><td>نظام تشغيل متخصص (Windows Server, RedHat, Ubuntu Server…).</td></tr></tbody></table></div>
+<hr/>
+<p>🔸 <strong>تشبيه مبسط</strong>:</p>
+<ul>
+<li>
+<p>الـ <strong>Workstation</strong> زي مكتب مهندس مجهز بأدوات قوية عشان ينجز شغله.</p>
+</li>
+<li>
+<p>الـ <strong>Server</strong> زي مخزن ضخم أو مركز خدمات بيخدم عدد كبير من الناس في وقت واحد.</p>
+</li>
+</ul>
+<h3 id="طيب-ال-servers-بتستخدم-ف-ايه-او-ايه-ال-server-roles">طيب ال servers بتستخدم ف ايه او ايه ال Server Roles<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#طيب-ال-servers-بتستخدم-ف-ايه-او-ايه-ال-server-roles" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="-file-server">🔹 File Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-file-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p><strong>المقصود بيه</strong>:<br/>
+السيرفر اللي وظيفته الأساسية إنه يخزن الملفات ويخليها متاحة لباقي الأجهزة على الشبكة (Clients أو Workstations).</p>
+</li>
+<li>
+<p><strong>بيعمل إيه؟</strong></p>
+<ol>
+<li>
+<p>يوفر مكان مركزي (Centralized Storage) يخزن فيه المستخدمين ملفاتهم بدل ما تكون متفرقة على كل جهاز.</p>
+</li>
+<li>
+<p>يسهل مشاركة الملفات بين المستخدمين (File Sharing).</p>
+</li>
+<li>
+<p>يوفر صلاحيات وصول (Permissions) بحيث تقدر تحدد مين يقرأ الملف، مين يعدل عليه، ومين ممنوع يوصل له أصلاً.</p>
+</li>
+<li>
+<p>يضمن النسخ الاحتياطي (Backup) علشان الملفات ما تضيعش لو حصل عطل.</p>
+</li>
+<li>
+<p>أحيانًا يوفر خصائص زي <strong>File Versioning</strong> (استرجاع نسخة قديمة من الملف).</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>بيستخدم إمتى؟</strong></p>
+<ul>
+<li>
+<p>في الشركات أو المؤسسات علشان كل الموظفين يشتغلوا على ملفات مشتركة من مكان واحد.</p>
+</li>
+<li>
+<p>بدل ما كل جهاز يحتفظ بنسخته من الملف (وده ممكن يعمل تضارب في النسخ)، الكل بيشتغل على نسخة مركزية.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>مميزاته</strong>:</p>
+<ul>
+<li>
+<p>تقليل التكرار (File Duplication).</p>
+</li>
+<li>
+<p>أمان أعلى (بفضل إدارة الصلاحيات).</p>
+</li>
+<li>
+<p>سهولة إدارة النسخ الاحتياطية.</p>
+</li>
+<li>
+<p>تنظيم الملفات بشكل مركزي.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>مثال واقعي</strong>:<br/>
+تخيل شركة فيها 50 موظف. بدل ما كل واحد عنده ملف Excel على جهازه، بيتعمل Folder على السيرفر الكل يدخل عليه. مدير الفريق ممكن يدي إذن للموظفين بالـ Read فقط، ويدي إذن للسكرتارية بـ Write، وهكذا.</p>
+</li>
+</ul>
+<h4 id="-print-server">🔹 Print Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-print-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p><strong>المقصود بيه</strong>:<br/>
+هو السيرفر المسؤول عن إدارة الطابعات (Printers) في الشبكة. بدل ما كل جهاز يتوصل مباشرة بالطابعة، الطابعات كلها بتتربط بالسيرفر، وهو اللي يوزع مهام الطباعة.</p>
+</li>
+<li>
+<p><strong>بيعمل إيه؟</strong></p>
+<ol>
+<li>
+<p><strong>إدارة الطابعات</strong>: السيرفر يعرف كل الطابعات المتوصلة بالشبكة.</p>
+</li>
+<li>
+<p><strong>إدارة طوابير الطباعة (Print Queue)</strong>: لو في كذا موظف بعت أمر طباعة في نفس الوقت، السيرفر يرتب الأوامر ويطبعها واحدة واحدة.</p>
+</li>
+<li>
+<p><strong>توزيع الطباعة</strong>: يختار الطابعة المناسبة (أقرب طابعة للموظف أو الطابعة اللي فاضية).</p>
+</li>
+<li>
+<p><strong>تطبيق الصلاحيات</strong>: يحدد مين مسموح له يطبع ومين لأ.</p>
+</li>
+<li>
+<p><strong>توفير تقارير</strong>: يوضح إحصائيات زي عدد الصفحات المطبوعة لكل موظف.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>بيستخدم إمتى؟</strong></p>
+<ul>
+<li>
+<p>في الشركات اللي عندها عدد كبير من الموظفين وطابعات متعددة.</p>
+</li>
+<li>
+<p>بدل ما كل طابعة تتوصل بجهاز واحد بس، السيرفر يخلي أي موظف يقدر يطبع من أي جهاز متصل بالشبكة.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>مميزاته</strong>:</p>
+<ul>
+<li>
+<p>تقليل التكاليف (لأن الطابعات بتتشارك).</p>
+</li>
+<li>
+<p>سهولة الإدارة (إضافة/حذف طابعة من مكان واحد).</p>
+</li>
+<li>
+<p>التحكم في الاستخدام (منع إسراف الورق).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>مثال واقعي</strong>:<br/>
+في بنك، الموظفين في كل طابق يطبعوا على طابعات معينة. الموظف يضغط “Print”، والسيرفر يقرر يبعته لأي طابعة متاحة.</p>
+</li>
+</ul>
+<h4 id="-web-server">🔹 Web Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-web-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p><strong>المقصود بيه</strong>:<br/>
+هو السيرفر اللي وظيفته إنه <strong>يخزن مواقع الإنترنت</strong> (Websites) ويعرضها للمستخدمين لما يطلبوها من خلال المتصفح (Browser).</p>
+</li>
+<li>
+<p><strong>بيعمل إيه؟</strong></p>
+<ol>
+<li>
+<p><strong>استقبال الطلب (Request)</strong>:<br/>
+لما تكتب رابط زي <code>www.google.com</code> في المتصفح، المتصفح يبعث طلب للسيرفر.</p>
+</li>
+<li>
+<p><strong>معالجة الطلب</strong>:<br/>
+السيرفر يشوف إنت طالب أي صفحة (مثلاً index.html أو صفحة تسجيل الدخول).</p>
+</li>
+<li>
+<p><strong>إرسال الاستجابة (Response)</strong>:<br/>
+السيرفر يبعتلك الصفحة المطلوبة (HTML, CSS, JavaScript, صور، …).</p>
+</li>
+<li>
+<p>أحيانًا السيرفر يتعامل مع <strong>برمجيات ديناميكية</strong> زي PHP, ASP.NET, Python (Django/Flask) علشان يولد صفحة حسب بيانات معينة (زي صفحة البروفايل الخاصة بيك).</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>بيستخدم إمتى؟</strong></p>
+<ul>
+<li>
+<p>لاستضافة (Hosting) مواقع الإنترنت أو التطبيقات (Web Applications).</p>
+</li>
+<li>
+<p>لو الشركة عندها موقع رسمي أو بوابة للموظفين (Intranet portal).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>مميزاته</strong>:</p>
+<ul>
+<li>
+<p>يخلي الموقع متاح على مدار 24 ساعة.</p>
+</li>
+<li>
+<p>يسمح لعدد كبير من الزوار يوصلوا للموقع في نفس الوقت.</p>
+</li>
+<li>
+<p>يقدر يطبق سياسات أمان (SSL, Firewalls).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>أمثلة على Web Servers</strong>:</p>
+<ul>
+<li>
+<p><strong>Apache HTTP Server</strong> (أشهر واحد ومفتوح المصدر).</p>
+</li>
+<li>
+<p><strong>Nginx</strong> (خفيف وسريع خصوصًا مع المواقع الكبيرة).</p>
+</li>
+<li>
+<p><strong>Microsoft IIS</strong> (Internet Information Services).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>مثال واقعي</strong>:<br/>
+لما تفتح فيسبوك، المتصفح يبعت طلب لسيرفرات فيسبوك. السيرفر يجيب البيانات (البوستات، الصور …) ويرجعها للمتصفح علشان تتعرض عندك.</p>
+</li>
+</ul>
+<h4 id="mail-server-">Mail Server ?<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mail-server-" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>الـ <strong>Mail Server</strong> أو خادم البريد الإلكتروني هو <strong>سيرفر</strong> (خادم) مسؤوليته إرسال واستقبال وتخزين رسائل البريد الإلكتروني (Emails) بين المستخدمين عبر الإنترنت أو داخل شبكة محلية.<br/>
+هو زي مكتب البريد لكن بشكل إلكتروني:</p>
+<ul>
+<li>
+<p>في مكتب البريد العادي: انت بتكتب رسالة، تديها للمكتب، وهو يوصلها للشخص التاني.</p>
+</li>
+<li>
+<p>في البريد الإلكتروني: برنامج البريد (زي Gmail أو Outlook) يبعث الرسالة للـ <strong>Mail Server</strong>، وهو بدوره يوصلها للـ Mail Server بتاع المستلم.</p>
+</li>
+</ul>
+<hr/>
+<p>🏗️ <strong>مكوّنات الـ Mail Server الأساسية</strong></p>
+<p>أي Mail Server بيتكون من <strong>خدمتين رئيسيتين</strong>:</p>
+<ol>
+<li>
+<p><strong>Outgoing Mail Server (Server الإرسال):</strong></p>
+<ul>
+<li>
+<p>اسمه غالبًا: <strong>SMTP Server</strong> (Simple Mail Transfer Protocol).</p>
+</li>
+<li>
+<p>وظيفته: ياخد الرسالة من جهازك أو برنامج البريد، ويوصلها لسيرفر المستلم.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Incoming Mail Server (Server الاستقبال):</strong></p>
+<ul>
+<li>
+<p>ده السيرفر اللي بيستقبل الرسائل ويحفظها للمستخدم.</p>
+</li>
+<li>
+<p>له بروتوكولات مشهورة:</p>
+<ul>
+<li>
+<p><strong>POP3 (Post Office Protocol v3):</strong> بينزل الرسائل من السيرفر لجهازك، وبعد كده ممكن يمسحها من السيرفر.</p>
+</li>
+<li>
+<p><strong>IMAP (Internet Message Access Protocol):</strong> يخليك تشوف الرسائل وانت لسه على السيرفر (مش شرط تنزلها كلها)، وبيسمح بالمزامنة بين أجهزة مختلفة (موبايل، لابتوب…).</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p>⚙️ <strong>خطوات إرسال إيميل من جهاز لجهاز</strong></p>
+<p>لما ترسل إيميل مثلًا من Gmail لحساب Yahoo:</p>
+<ol>
+<li>
+<p>تكتب الرسالة في Gmail.</p>
+</li>
+<li>
+<p>Gmail Client (البرنامج أو الويب) يبعتها للـ <strong>SMTP Server بتاع Gmail</strong>.</p>
+</li>
+<li>
+<p>سيرفر Gmail يدور على <strong>Mail Server الخاص بـ Yahoo</strong> باستخدام الـ <strong>DNS (MX Records)</strong>.</p>
+</li>
+<li>
+<p>الرسالة تتبعت لسيرفر Yahoo.</p>
+</li>
+<li>
+<p>سيرفر Yahoo يخزن الرسالة على <strong>Incoming Server (POP3/IMAP)</strong>.</p>
+</li>
+<li>
+<p>المستلم يفتح Yahoo Mail → فيشوف الرسالة.</p>
+</li>
+</ol>
+<hr/>
+<p><strong>🧰 أمثلة على Mail Servers مشهورة</strong></p>
+<ul>
+<li>
+<p><strong>Gmail (Google Mail Server)</strong></p>
+</li>
+<li>
+<p><strong>Outlook/Hotmail (Microsoft Mail Server)</strong></p>
+</li>
+<li>
+<p><strong>Yahoo Mail</strong></p>
+</li>
+<li>
+<p>أو شركات صغيرة بتعمل Mail Server خاص بيها باستخدام برامج زي:</p>
+<ul>
+<li>
+<p><strong>Postfix</strong> (في لينكس)</p>
+</li>
+<li>
+<p><strong>Microsoft Exchange Server</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<p><strong>📌 ملحوظة مهمة</strong></p>
+<ul>
+<li>
+<p>الـ Mail Server نفسه ما بيشتغلش لوحده، لازم يكون مرتبط بـ:</p>
+<ul>
+<li>
+<p><strong>DNS Records (MX Record)</strong> عشان يعرف يوجّه الرسائل.</p>
+</li>
+<li>
+<p><strong>Authentication</strong> (زي SMTP Auth) عشان يمنع السبام.</p>
+</li>
+<li>
+<p><strong>Security</strong> (زي SSL/TLS) عشان التشفير وحماية الرسائل.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="-proxy-server">🌐 Proxy Server؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-proxy-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>الـ <strong>Proxy Server</strong> هو <strong>خادم وسيط</strong> (Intermediate Server) بيقف بين جهازك (العميل Client) وبين الإنترنت.<br/>
+بمعنى: بدل ما جهازك يتواصل مباشرة مع المواقع، بيكلم الـ Proxy، وهو اللي يروح يجيبلك البيانات من الإنترنت ويرجعها لك.</p>
+<p>تقدر تعتبره زي:</p>
+<ul>
+<li>
+<p><strong>المترجم</strong>: انت بتكلم واحد مش فاهم لغتك → المترجم يوصل كلامك ويرجعلك الرد.</p>
+</li>
+<li>
+<p><strong>الوسيط</strong>: بدل ما تروح لمحل بنفسك، تبعت واحد يجيب الحاجة لك.</p>
+</li>
+</ul>
+<hr/>
+<p><strong>⚙️ إزاي بيشتغل؟</strong></p>
+<ol>
+<li>
+<p>انت تكتب في المتصفح: <code>www.example.com</code>.</p>
+</li>
+<li>
+<p>الطلب (Request) يروح للـ <strong>Proxy Server</strong> بدل ما يروح للموقع مباشرة.</p>
+</li>
+<li>
+<p>الـ Proxy يبعته للموقع.</p>
+</li>
+<li>
+<p>الموقع يرد على الـ Proxy بالصفحة.</p>
+</li>
+<li>
+<p>الـ Proxy يوصل الرد ليك.</p>
+</li>
+</ol>
+<hr/>
+<p><strong>🏗️ أنواع الـ Proxy Server</strong></p>
+<p>فيه أنواع كتير، أهمهم:</p>
+<ol>
+<li>
+<p><strong>Forward Proxy (الأكتر شيوعًا):</strong></p>
+<ul>
+<li>
+<p>بيقف بين المستخدم والإنترنت.</p>
+</li>
+<li>
+<p>بيخفي هوية المستخدم أو يفلتر المحتوى.</p>
+</li>
+<li>
+<p>مثال: مدارس أو شركات تمنع موظفينهم من الدخول لمواقع معينة.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Reverse Proxy:</strong></p>
+<ul>
+<li>
+<p>بيقف قدام السيرفر بدل المستخدم.</p>
+</li>
+<li>
+<p>بيستقبل طلبات المستخدمين ويروّحها للسيرفرات الداخلية.</p>
+</li>
+<li>
+<p>مفيد لتحسين الأداء (Load Balancing) وحماية السيرفرات من الهجمات.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<p><strong>🎯 فوائد الـ Proxy Server</strong></p>
+<ul>
+<li>
+<p><strong>إخفاء الهوية (Anonymity):</strong> يخلي الـ IP الحقيقي بتاعك مش باين.</p>
+</li>
+<li>
+<p><strong>الأمان (Security):</strong> يمنع بعض الهجمات ويعمل فلترة.</p>
+</li>
+<li>
+<p><strong>تسريع التصفح (Caching):</strong> يحفظ نسخ من الصفحات المشهورة، فبدل ما يجيبها من الإنترنت كل مرة، يديك النسخة المخزنة بسرعة.</p>
+</li>
+<li>
+<p><strong>التحكم (Control):</strong> المؤسسات ممكن تمنع أو تسمح لموظفينهم بالدخول لمواقع معينة عن طريق الـ Proxy.</p>
+</li>
+</ul>
+<hr/>
+<p><strong>📌 أمثلة عملية</strong></p>
+<ul>
+<li>
+<p>لما تستخدم <strong>VPN</strong> → هو في الأساس نوع من أنواع البروكسي لكن مع <strong>تشفير</strong>.</p>
+</li>
+<li>
+<p>الشركات الكبيرة بتستخدم <strong>Reverse Proxy</strong> زي Nginx أو HAProxy عشان توزع الضغط على أكتر من سيرفر.</p>
+</li>
+<li>
+<p>مدارس أو Cyber Cafes يستخدموا Proxy عشان يمنعوا فتح فيسبوك أو يوتيوب.</p>
+</li>
+</ul>
+<h3 id="يعني-ايه-host">يعني ايه HOST<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#يعني-ايه-host" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ال host مصطلح بيتقال على اي جهاز بياخد <strong>IP</strong></p>
+<h3 id="ما-هو-الـ-ip-address">ما هو الـ IP Address؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ما-هو-الـ-ip-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>IP (Internet Protocol) Address</strong> = عنوان رقمي فريد بيتخصص لكل جهاز على الشبكة (كمبيوتر، موبايل، راوتر…).</p>
+</li>
+<li>
+<p>زي رقم التليفون أو عنوان البيت → بيسمح للأجهزة إنها تتعرف وتتواصل مع بعضها.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="2️⃣-يعني-إيه-ipv4">2️⃣ يعني إيه IPv4؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-يعني-إيه-ipv4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p><strong>IPv4 = Internet Protocol version 4</strong>.</p>
+</li>
+<li>
+<p>ده الإصدار الأشهر والأقدم، ولسه مستخدم بشكل واسع.</p>
+</li>
+<li>
+<p>بيتكون من <strong>32-bit address</strong> (32 خانة من 0 و 1).</p>
+</li>
+<li>
+<p>بيتكتب عادةً بصيغة <strong>أربع مجموعات (octets)</strong> من أرقام عشرية مفصولة بنقط.</p>
+<ul>
+<li>
+<p>مثال: <code>192.168.1.15</code></p>
+</li>
+<li>
+<p>كل مجموعة (octet) = 8 bits → الرقم فيها من 0 لـ 255.</p>
+</li>
+<li>
+<p>يبقى: 8 × 4 = 32 bits.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h4 id="3️⃣-تقسيم-الـ-ipv4-network-address-و-host-address">3️⃣ تقسيم الـ IPv4: Network Address و Host Address<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3️⃣-تقسيم-الـ-ipv4-network-address-و-host-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>الـ IP بيتقسم لجزئين:</p>
+<ol>
+<li>
+<p><strong>Network Address</strong></p>
+<ul>
+<li>
+<p>يحدد الشبكة اللي الجهاز تابع ليها.</p>
+</li>
+<li>
+<p>كل الأجهزة في نفس الشبكة بيبقى عندها نفس <strong>Network Address</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Host Address</strong></p>
+<ul>
+<li>
+<p>يحدد الجهاز نفسه جوه الشبكة.</p>
+</li>
+<li>
+<p>لازم يكون مختلف لكل جهاز في نفس الشبكة.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h4 id="4️⃣-إزاي-نعرف-الجزء-الخاص-بالشبكة-والجزء-الخاص-بالـ-host">4️⃣ إزاي نعرف الجزء الخاص بالشبكة والجزء الخاص بالـ Host؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4️⃣-إزاي-نعرف-الجزء-الخاص-بالشبكة-والجزء-الخاص-بالـ-host" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>هنا بيجي دور <strong>Subnet Mask</strong> 👇</p>
+<h4 id="subnet-mask">Subnet Mask<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#subnet-mask" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>مثال: <code>255.255.255.0</code></p>
+</li>
+<li>
+<p>بيحدد: كام Bit من الـ IP بيتخصّص للـ Network، والباقي للـ Host.</p>
+</li>
+</ul>
+<h4 id="إزاي-نقرأه">إزاي نقرأه؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#إزاي-نقرأه" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>كل 255 = جزء Network.</p>
+</li>
+<li>
+<p>كل 0 = جزء Host.</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-مثال-عملي">🔎 مثال عملي<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مثال-عملي" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>IP: <code>192.168.1.15</code><br/>
+Subnet Mask: <code>255.255.255.0</code></p>
+<ul>
+<li>
+<p>أول 3 Octets (192.168.1) = Network Address.</p>
+</li>
+<li>
+<p>آخر Octet (15) = Host Address.</p>
+</li>
+</ul>
+<p>يعني:</p>
+<ul>
+<li>
+<p><strong>Network Address</strong> = <code>192.168.1.0</code></p>
+</li>
+<li>
+<p><strong>Host Address</strong> = <code>15</code> (الجهاز ده).</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-مثال-تاني">🔎 مثال تاني<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-مثال-تاني" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>IP: <code>10.20.5.100</code><br/>
+Subnet Mask: <code>255.255.0.0</code></p>
+<ul>
+<li>
+<p>أول 2 Octets (10.20) = Network Address.</p>
+</li>
+<li>
+<p>آخر 2 Octets (5.100) = Host Address.</p>
+</li>
+</ul>
+<p>يبقى:</p>
+<ul>
+<li>
+<p><strong>Network Address</strong> = <code>10.20.0.0</code></p>
+</li>
+<li>
+<p><strong>Host Address</strong> = <code>5.100</code>.</p>
+</li>
+</ul>
+<h3 id="️--إيه-هو-الـ-mac-address">🖥️  إيه هو الـ MAC Address؟<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#️--إيه-هو-الـ-mac-address" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>MAC (Media Access Control) Address</strong> = عنوان <strong>فريد وثابت</strong> بيتخصص لكل كارت شبكة (Network Interface Card – NIC) في المصنع.</p>
+</li>
+<li>
+<p>بيتكون من <strong>48-bit</strong> (6 مجموعات) مكتوبة بالـ Hexadecimal.</p>
+<ul>
+<li>مثال: <code>00:1A:2B:3C:4D:5E</code>.</li>
+</ul>
+</li>
+<li>
+<p>كل جهاز في العالم ليه MAC مختلف، زي <strong>البصمة</strong> أو <strong>رقم الشاسيه في العربية</strong>.</p>
+</li>
+</ul>
+<p>💡 بيتخزن في الـ <strong>Hardware</strong> نفسه (كارت الشبكة)، مش بيتغير بسهولة.</p>
+<h3 id="--الفرق-الجوهري-بين-mac-و-ip">🔑  الفرق الجوهري بين MAC و IP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#--الفرق-الجوهري-بين-mac-و-ip" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>العنصر</th><th>MAC Address</th><th>IP Address</th></tr></thead><tbody><tr><td><strong>المكان</strong></td><td>بيتحدد من المصنع (Hardware)</td><td>بيتحدد من الراوتر/المسؤول عن الشبكة (Software)</td></tr><tr><td><strong>الثبات</strong></td><td>ثابت وفريد عالميًا</td><td>متغير حسب الشبكة اللي داخلها</td></tr><tr><td><strong>الطبقة (OSI Model)</strong></td><td>Layer 2 – Data Link</td><td>Layer 3 – Network</td></tr><tr><td><strong>الغرض</strong></td><td>يحدد <strong>الجهاز نفسه</strong> على الشبكة المحلية (LAN)</td><td>يحدد <strong>المكان أو الموقع</strong> بتاع الجهاز في الشبكة (LAN أو Internet)</td></tr><tr><td><strong>الشكل</strong></td><td>Hexadecimal (مثال: <code>00:1A:2B:3C:4D:5E</code>)</td><td>Decimal (مثال: <code>192.168.1.3</code>)</td></tr><tr><td><strong>النطاق</strong></td><td>يشتغل داخل الشبكة المحلية فقط</td><td>يشتغل محليًا وعالميًا (على الإنترنت)</td></tr></tbody></table></div>
+<hr/>
+<h4 id="-4-مثال-للتوضيح">🔎 4. مثال للتوضيح<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-4-مثال-للتوضيح" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>تخيل إنك ساكن في عمارة:</p>
+<ul>
+<li>
+<p><strong>MAC Address</strong> = رقم شقتك الداخلي اللي محدد من الشركة البانية (ما بيتغيرش).</p>
+</li>
+<li>
+<p><strong>IP Address</strong> = العنوان البريدي اللي البريد يستخدمه عشان يوصل لك (ممكن يتغير لو انتقلت لشقة تانية).</p>
+</li>
+</ul>
+<hr/>
+<h4 id="-5-علاقة-mac-بالـ-ip">📌 5. علاقة MAC بالـ IP<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-5-علاقة-mac-بالـ-ip" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>
+<p>لما جهازك يتصل بشبكة LAN، الراوتر بيعمل ربط (Mapping) بين الـ <strong>IP Address</strong> والـ <strong>MAC Address</strong> باستخدام حاجة اسمها <strong>ARP (Address Resolution Protocol)</strong>.</p>
+</li>
+<li>
+<p>مثال:</p>
+<ul>
+<li>
+<p>IP: <code>192.168.1.3</code></p>
+</li>
+<li>
+<p>MAC: <code>00:1A:2B:3C:4D:5E</code></p>
+</li>
+</ul>
+</li>
+</ul></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-1" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#ايه-ال-subnet-وتفرق-ايه-عن-ال-network" data-for="ايه-ال-subnet-وتفرق-ايه-عن-ال-network">ايه ال Subnet وتفرق ايه عن ال Network</a></li><li class="depth-0"><a href="#الربط-بين-2-lan" data-for="الربط-بين-2-lan">الربط بين 2 LAN</a></li><li class="depth-0"><a href="#يعني-ايه-intranet-و-يفرق-ايه-عن-internet" data-for="يعني-ايه-intranet-و-يفرق-ايه-عن-internet">يعني ايه intranet و يفرق ايه عن internet</a></li><li class="depth-0"><a href="#-العلاقة-بين-intranet-و-lan" data-for="-العلاقة-بين-intranet-و-lan">✅ العلاقة بين Intranet و LAN</a></li><li class="depth-0"><a href="#ايه-الفرق-بين-extranet--intranet" data-for="ايه-الفرق-بين-extranet--intranet">ايه الفرق بين Extranet , Intranet</a></li><li class="depth-0"><a href="#ايه-ال-work-station" data-for="ايه-ال-work-station">ايه ال Work Station</a></li><li class="depth-0"><a href="#ايه-الفرق-بين-ال-workstation-و-ال-server" data-for="ايه-الفرق-بين-ال-workstation-و-ال-server">ايه الفرق بين ال workstation و ال server</a></li><li class="depth-0"><a href="#طيب-ال-servers-بتستخدم-ف-ايه-او-ايه-ال-server-roles" data-for="طيب-ال-servers-بتستخدم-ف-ايه-او-ايه-ال-server-roles">طيب ال servers بتستخدم ف ايه او ايه ال Server Roles</a></li><li class="depth-0"><a href="#يعني-ايه-host" data-for="يعني-ايه-host">يعني ايه HOST</a></li><li class="depth-0"><a href="#ما-هو-الـ-ip-address" data-for="ما-هو-الـ-ip-address">ما هو الـ IP Address؟</a></li><li class="depth-0"><a href="#️--إيه-هو-الـ-mac-address" data-for="️--إيه-هو-الـ-mac-address">🖥️  إيه هو الـ MAC Address؟</a></li><li class="depth-0"><a href="#--الفرق-الجوهري-بين-mac-و-ip" data-for="--الفرق-الجوهري-بين-mac-و-ip">🔑  الفرق الجوهري بين MAC و IP</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2025</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="./postscript.js" type="module" data-persist="true"></script></html>

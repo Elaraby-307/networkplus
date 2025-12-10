@@ -1,0 +1,49 @@
+/* اتجاه عربي افتراضي في المحتوى */
+.page, .page-content, body {
+    direction: rtl;
+    text-align: right;
+    font-family: "Cairo", "Amiri", sans-serif;
+}
+
+/* الإنجليزية داخل الكود تبقى LTR */
+pre, code, .language-plaintext {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* الفقرات والـ lists */
+p, li, ul, ol {
+    line-height: 1.8;
+}
+
+/* Fix mixed Arabic + English text alignment */
+p, li {
+  unicode-bidi: plaintext;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Make English words inside Arabic readable */
+p > *, li > * {
+  unicode-bidi: isolate;
+}
+
+code, pre {
+  direction: ltr !important;
+  unicode-bidi: embed;
+  text-align: left;
+}
+
+/* Headers stay RTL */
+h1, h2, h3, h4, h5, h6 {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Table of contents & sidebar stay LTR (أفضل للشكل) */
+.sidebar, .toc {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+body { border: 5px solid red;}
