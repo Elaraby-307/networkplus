@@ -151,10 +151,11 @@ pre:hover > .expand-button {
 <p>تعالى نجيب ال subnet address بتاعت الاربعه subnets اللي عندي
 انا كان عندي ال classful network_ID هو 205.15.31.0 ولما عملت subnetting و حولت اول two bits من اخر octet في ال subnet mask لواحد
 ف لما اعمل anding هتبقى قيمه anding ال host portion في الIP مع ال subnet mask معتمده على قيمه ال host portion في ال IP و يبقى كدا في اربع احتمالات كل subnet هتاخد واحد منهم وهم
-205.15.3.[10000000]^binary=128
-205.15.3.[11000000]^binary=192
-205.15.3.[01000000]^binary=64
-205.15.3.[00000000]^binary=0</p>
+<p> 205.15.3.0 => 205.15.3.63</p>
+<p> 205.15.3.64 => 205.15.3.127</p>
+<p> 205.15.3.128 => 205.15.3.191</p>
+<p> 205.15.3.192 => 205.15.3.255</p></p>
+
 <p>لو اتكلمنا عن ال subnet address دا 205.15.3.64
 يبقى اول valid IP داخل ال subnet دي هو 205.15.3.65 يعني هياخد hosts من 65 <span>→</span> 126 يعني 64 -2 = 62</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
                 s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
