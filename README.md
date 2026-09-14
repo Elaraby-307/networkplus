@@ -16,7 +16,7 @@ The AI assistance is mainly used for **summarization, organization, and clarific
 
 You can also view the summary as a **live, organized website through GitHub Pages**:
 
-👉 **[View the Network+ Summary Online](YOUR-GITHUB-PAGES-LINK)**
+👉 **[View the Network+ Summary Online]https://elaraby-307.github.io/networkplus/**
 
 The GitHub Pages version provides a more convenient way to read and navigate through the summarized course content.
 
